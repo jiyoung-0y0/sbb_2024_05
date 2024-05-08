@@ -1,5 +1,15 @@
 <h2>
-    <h3 th:text="${question,id}"></h3>
-    <h3 th:text="${question,subject}"></h3>
-    <h3 th:text="${question,content}"></h3>
+    <h3 th:text="${question.id}"></h3>
+    <div th:text="${question.subject}"></div>
+    <div th:text="${question.content}"></div>
 </h2>
+
+<form action="/question/createTemp" method="post">
+    <div>
+        <span>내용</span>
+        <br>
+        <textarea name="content" placeholder="내용" rows="5"></textarea>
+    </div>
+
+    <button type="submit">답변등록</button>
+</form>
