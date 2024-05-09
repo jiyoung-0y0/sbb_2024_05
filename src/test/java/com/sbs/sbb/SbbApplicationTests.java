@@ -4,7 +4,6 @@ import com.sbs.sbb.Answer.Answer;
 import com.sbs.sbb.Answer.AnswerRepository;
 import com.sbs.sbb.Question.Question;
 import com.sbs.sbb.Question.QuestionRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +23,6 @@ class SbbApplicationTests {
 	@Autowired
 	private AnswerRepository answerRepository;
 
-	@Transactional
 	@Test
 	void testJpa() {
 //		Question q1 = new Question();
