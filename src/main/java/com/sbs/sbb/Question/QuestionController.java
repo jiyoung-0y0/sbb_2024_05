@@ -1,5 +1,6 @@
 package com.sbs.sbb.Question;
 
+import com.sbs.sbb.Answer.AnswerForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class QuestionController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id) {
+    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerFrom) {
         Question q = this.questionService.getQuestion(id);
 
         model.addAttribute("question", q);
@@ -41,8 +42,8 @@ public class QuestionController {
     // QuestionFrom questionForm 써주는 이유 : question_form.html에서  questionForm 변수가 없으면 실행이 안되기 때문에
     // 빈 객체라도 만든다.
     // public String create(Model modle) {
-    public String create(QuestionForm questionForm) {
-//        model.addAttribute("questionForm", new QuestionForm());
+    public String create(QuestionForm questionFrom) {
+//        model.addAttribute("questionFrom", new QuestionForm());
 
         return "question_form";
     }
