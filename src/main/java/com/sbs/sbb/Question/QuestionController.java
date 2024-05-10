@@ -41,8 +41,8 @@ public class QuestionController {
     // QuestionFrom questionForm 써주는 이유 : question_form.html에서  questionForm 변수가 없으면 실행이 안되기 때문에
     // 빈 객체라도 만든다.
     // public String create(Model modle) {
-    public String create(Model model) {
-        model.addAttribute("questionForm", new QuestionForm());
+    public String create(QuestionForm questionForm) {
+//        model.addAttribute("questionForm", new QuestionForm());
 
         return "question_form";
     }
