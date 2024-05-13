@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,4 +33,12 @@ public class Question {
     // 선택
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    public void addAnswer(Answer a) {
+        if (answerList == null) {
+            answerList = new ArrayList<>();
+        }
+        a.setQuestion(this);
+        answerList.add(a);
+    }
 }
