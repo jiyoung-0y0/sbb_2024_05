@@ -18,7 +18,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
                 .formLogin((formLogin) -> formLogin
                         .loginPage("/user/login")
-                        .loginProcessingUrl("/user.login")
+                        .loginProcessingUrl("/user/login")
                         .defaultSuccessUrl("/"))
         ;
         return http.build();
