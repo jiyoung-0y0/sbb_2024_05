@@ -1,6 +1,7 @@
 package com.sbs.sbb.Question;
 
-import com.sbs.sbb.DataNotException;
+import com.sbs.sbb.DataNotFoundException;
+import com.sbs.sbb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,25 +29,27 @@ public class QuestionService {
         // oq.isPersent() == false
         // !oq.isPresent()
         // oq.isEmpty()
-        if ( oq.isEmpty() ) throw new DataNotException("question not found");
+        if ( oq.isEmpty() ) throw new DataNotFoundException("question not found");
 
         return oq.get();
     }
 
-    public Question create(String subject, String content) {
+    public Question create(String subject, String content, SiteUser user) {
         Question q = new Question();
         q.setSubject(subject);
         q.setContent(content);
+        q.setAuthor(user);
         q.setCreateDate(LocalDateTime.now());
 
         this.questionRepository.save(q);
         return q;
     }
+
     public Page<Question> getList(int page) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
-        Pageable pageable = PageRequest.of(page, 10,Sort.by(sorts));
+
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         return this.questionRepository.findAll(pageable);
     }
 }
-

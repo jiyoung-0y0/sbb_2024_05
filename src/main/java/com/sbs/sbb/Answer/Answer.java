@@ -1,8 +1,8 @@
 package com.sbs.sbb.Answer;
 
 import com.sbs.sbb.Question.Question;
+import com.sbs.sbb.user.SiteUser;
 import jakarta.persistence.*;
-import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Entity
+@Entity // answer 테이블
 public class Answer {
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
@@ -21,10 +21,11 @@ public class Answer {
 
     private LocalDateTime createDate;
 
-    // private Integer questionId;
-
     // Many = Answer, One = Question
     // 필수
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }

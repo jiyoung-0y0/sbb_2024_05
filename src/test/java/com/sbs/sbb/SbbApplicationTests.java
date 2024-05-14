@@ -29,7 +29,6 @@ class SbbApplicationTests {
 	private QuestionService questionService;
 	@Autowired
 	private UserService userService;
-
 	@Autowired
 	private QuestionRepository questionRepository;
 	@Autowired
@@ -52,7 +51,6 @@ class SbbApplicationTests {
 		// 흔적 삭제 -> 다음번 INSERT를 할 때 id가 1번으로 설정되도록
 		userRepository.deleteAll();
 		userRepository.clearAutoIncrement();
-
 
 		// 회원 2명 생성
 		userService.create("user1", "user1@test.com", "1234");
